@@ -1,4 +1,4 @@
-# SanePatch
+<img src="https://raw.githubusercontent.com/Jcambass/sane_patch/master/logo.png" width="100" height="100">
 
 SanePatch is a simple and non intrusive helper that aims to make monkey patching a little bit safer.
 
