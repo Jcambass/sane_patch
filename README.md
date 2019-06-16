@@ -1,5 +1,7 @@
 <img src="https://raw.githubusercontent.com/Jcambass/sane_patch/master/logo.png" width="100" height="100">
 
+# SanePatch
+
 SanePatch is a simple and non intrusive helper that aims to make monkey patching a little bit safer.
 
 It achieves this by only applying your patches to a specific version of a gem and raising a exception if the gem version changed. This means that you will always double check that your patches still work after upgrading gems. No surprises anymore!
