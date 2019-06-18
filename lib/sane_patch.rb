@@ -6,12 +6,12 @@ module SanePatch
     IncompatibleVersion = Class.new(ArgumentError)
   end
 
-  def self.patch(gem_name, version, details: nil)
+  def self.patch(gem_name, *requirements, details: nil)
     gem_spec = Gem.loaded_specs[gem_name]
-    patched_version = Gem::Version.new(version)
     raise Errors::GemAbsent, "Can't patch unloaded gem #{gem_name}" unless gem_spec
 
-    if gem_spec.version == patched_version
+    gem_requirement = Gem::Requirement.create(requirements)
+    if gem_requirement.satisfied_by?(gem_spec.version)
       yield
     else
       message = <<~ERROR
