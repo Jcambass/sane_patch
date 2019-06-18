@@ -55,7 +55,7 @@ SanePatch.patch('greeter', '1.1.0') do
   Greeter.prepend(GreeterPatch)
 end
 
-Greeter.greet # => 'Hello Folk'
+Greeter.greet # => 'Hello Folks'
 ```
 
 If somebody updates the gem version the patch will raise as soon as its code path is executed:

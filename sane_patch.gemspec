@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["hello@joel.am"]
 
   spec.summary       = %q{Making monkey patches sane again}
-  spec.description   = %q{SanePatch will prevent gem upgrades from sillently breaking your monkey patches.}
+  spec.description   = %q{SanePatch will prevent gem upgrades from silently breaking your monkey patches.}
   spec.homepage      = "https://github.com/Jcambass/sane_patch"
   spec.license       = "MIT"
 
