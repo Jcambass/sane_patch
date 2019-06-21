@@ -12,3 +12,13 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+def with_loaded_gems(gem_name_version_hash)
+  gem_name_version_hash.each_pair do |gem_name, gem_version|
+    allow(Gem.loaded_specs).to receive(:[]).with(gem_name).and_return(
+      double("Fake Gemspec for #{gem_name}", version: Gem::Version.new(gem_version))
+    )
+  end
+
+  yield
+end
