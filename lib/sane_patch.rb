@@ -19,7 +19,7 @@ module SanePatch
         There are patches in place that need to be verified.
         Make sure that the patch at #{caller_locations.first} is still needed and working.
       ERROR
-      message += "Details: \n #{details}" if details
+      message += "Details:\n#{details}" if details
 
       raise Errors::IncompatibleVersion, message
     end
