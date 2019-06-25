@@ -60,9 +60,10 @@ Greeter.greet # => 'Hello Folks'
 
 If somebody updates the gem version the patch will raise as soon as its code path is executed:
 ```
-It looks like the greeter gem was upgraded. (RuntimeError)
-There are patches in place that need to be verified.
-Make sure that the patch at initializers/greeter_patch.rb:8 is still needed and working.
+SanePatch::Errors::IncompatibleVersion:
+  It looks like the greeter gem was upgraded.
+  There are patches in place that need to be verified.
+  Make sure that the patch at initializers/greeter_patch.rb:8 is still needed and working.
 ```
 
 ### Providing additional information
@@ -94,13 +95,14 @@ Greeter.silence # => ''
 The additionally provided details will also show up in the exception message.
 
 ```
-It looks like the greeter gem was upgraded. (RuntimeError)
-There are patches in place that need to be verified.
-Make sure that the patch at initializers/greeter_patch.rb:8 is still needed and working.
-Details:
-The `silence` method should output an empty string rather than nil.
-This is a known issue and will be fixed in the next release.
-See: https://github.com/Jcambass/greeter/issues/45
+SanePatch::Errors::IncompatibleVersion:
+  It looks like the greeter gem was upgraded.
+  There are patches in place that need to be verified.
+  Make sure that the patch at initializers/greeter_patch.rb:8 is still needed and working.
+  Details:
+  The `silence` method should output an empty string rather than nil.
+  This is a known issue and will be fixed in the next release.
+  See: https://github.com/Jcambass/greeter/issues/45
 ```
 
 ## Contributing
