@@ -20,7 +20,7 @@ Good reasons to monkey patch a gem could be:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sane_patch'
+gem 'sane_patch', '~> 0.2'
 ```
 
 And then execute:
