@@ -3,7 +3,7 @@ require "sane_patch/version"
 module SanePatch
   module Errors
     GemAbsent           = Class.new(ArgumentError)
-    IncompatibleVersion = Class.new(ArgumentError)
+    IncompatibleVersion = Class.new(RuntimeError)
   end
 
   def self.patch(gem_name, *requirements, details: nil)
