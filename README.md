@@ -66,6 +66,24 @@ SanePatch::Errors::IncompatibleVersion:
   Make sure that the patch at initializers/greeter_patch.rb:8 is still needed and working.
 ```
 
+### Complex version constraints
+
+SanePatch supports all [version constraints](http://docs.seattlerb.org/rubygems/Gem/Requirement.html) you know and love from RubyGems.
+
+```ruby
+SanePatch.patch('greeter', '~> 1.1.0') { # your patch }
+SanePatch.patch('greeter', '> 1.1.0') { # your patch }
+SanePatch.patch('greeter', '< 1.1.0') { # your patch }
+```
+
+It even supports version ranges based on multiple constraints:
+
+```ruby
+SanePatch.patch('greeter', '> 1.0.0', '< 1.1.0') { # your patch }
+```
+
+This is especially useful if you patch a bug where you know the affected gem versions.
+
 ### Providing additional information
 
 If you patch a known bug in a gem it might be useful to provide additional information why the patch is needed and when it can be removed.
