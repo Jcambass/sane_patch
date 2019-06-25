@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Jcambass/sane_patch/master/logo.png" width="100" height="100">
+<img src="https://raw.githubusercontent.com/Jcambass/sane_patch/master/assets/logo.png" width="100" height="100">
 
 # SanePatch
 
