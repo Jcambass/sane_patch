@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "sane_patch"
+require 'rspec/expectations'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -10,6 +11,7 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+    c.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 end
 
@@ -21,4 +23,22 @@ def with_loaded_gems(gem_name_version_hash)
   end
 
   yield
+end
+
+RSpec::Matchers.define :engage_guard do
+  match do |actual|
+    yielded = false
+    expect {
+      actual.call(Proc.new { yielded = true })
+     }.to raise_error(SanePatch::Errors::IncompatibleVersion)
+    expect(yielded).to be_falsey
+  end
+
+  match_when_negated do |actual|
+    yielded = false
+    actual.call(Proc.new { yielded = true })
+    expect(yielded).to be_truthy
+  end
+
+  supports_block_expectations
 end
