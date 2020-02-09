@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sane_patch (0.2.0)
+    sane_patch (1.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -32,4 +32,4 @@ DEPENDENCIES
   sane_patch!
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
