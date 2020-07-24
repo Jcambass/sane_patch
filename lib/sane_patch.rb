@@ -6,7 +6,7 @@ module SanePatch
     IncompatibleVersion = Class.new(RuntimeError)
   end
 
-  def self.patch(gem_name, *requirements, details: nil, raise_error: true)
+  def self.patch(gem_name, *requirements, details: nil, raise_error: true, logger: nil)
     gem_spec = Gem.loaded_specs[gem_name]
     raise Errors::GemAbsent, "Can't patch unloaded gem #{gem_name}" unless gem_spec
 
@@ -20,6 +20,8 @@ module SanePatch
         Make sure that the patch at #{caller_locations.first} is still needed and working.
       ERROR
       message += "Details:\n#{details}" if details
+
+      logger.warn(message) if logger
 
       raise Errors::IncompatibleVersion, message if raise_error
     end

@@ -1,3 +1,5 @@
+require 'logger'
+
 RSpec.describe SanePatch do
   it "has a version number" do
     expect(SanePatch::VERSION).not_to be nil
@@ -47,6 +49,31 @@ RSpec.describe SanePatch do
         it "doesn't raise an error for incompatible version constraints" do
           with_loaded_gems('some_gem' => "1.0.1") do
             expect { |b| SanePatch.patch('some_gem', ">= 0.0.1", "< 1.0.0", raise_error: false, &b) }.to engage_guard_no_raise
+          end
+        end
+      end
+
+      context "when configured with a logger" do
+        let(:logger) { instance_double(Logger) }
+
+        it "logs a warning for incompatible version" do
+          with_loaded_gems('some_gem' => "1.0.1") do
+            expect(logger).to receive(:warn).with(/some_gem/)
+            SanePatch.patch('some_gem', "0.0.1", logger: logger, raise_error: false) { raise "Won't execute" }
+          end
+        end
+
+        it "logs a warning for incompatible version constraint" do
+          with_loaded_gems('some_gem' => "1.0.1") do
+            expect(logger).to receive(:warn).with(/some_gem/)
+            SanePatch.patch('some_gem', "0.0.1", logger: logger, raise_error: false) { raise "Won't execute" }
+          end
+        end
+
+        it "logs a warning for incompatible version constraints" do
+          with_loaded_gems('some_gem' => "1.0.1") do
+            expect(logger).to receive(:warn).with(/some_gem/)
+            SanePatch.patch('some_gem', "0.0.1", logger: logger, raise_error: false) { raise "Won't execute" }
           end
         end
       end
