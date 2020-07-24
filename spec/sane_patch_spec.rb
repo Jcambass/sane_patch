@@ -31,6 +31,26 @@ RSpec.describe SanePatch do
         end
       end
 
+      context "when configured to not raise an error" do
+        it "doesn't raise an error for incompatible version" do
+          with_loaded_gems('some_gem' => "1.0.1") do
+            expect { |b| SanePatch.patch('some_gem', "0.0.1", raise_error: false, &b) }.to engage_guard_no_raise
+          end
+        end
+
+        it "doesn't raise an error for incompatible version constraint" do
+          with_loaded_gems('some_gem' => "1.0.1") do
+            expect { |b| SanePatch.patch('some_gem', "~> 0.0.1", raise_error: false, &b) }.to engage_guard_no_raise
+          end
+        end
+
+        it "doesn't raise an error for incompatible version constraints" do
+          with_loaded_gems('some_gem' => "1.0.1") do
+            expect { |b| SanePatch.patch('some_gem', ">= 0.0.1", "< 1.0.0", raise_error: false, &b) }.to engage_guard_no_raise
+          end
+        end
+      end
+
       it "execute block for compatible version" do
         with_loaded_gems('some_gem' => "1.0.1") do
           expect { |b| SanePatch.patch('some_gem', "1.0.1", &b) }.not_to engage_guard
