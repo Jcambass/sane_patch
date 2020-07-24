@@ -66,7 +66,7 @@ SanePatch::Errors::IncompatibleVersion:
   Make sure that the patch at initializers/greeter_patch.rb:8 is still needed and working.
 ```
 
-Setting the `raise_error` keyword argument to `true` will skip the execution of the block but will not raise an error.
+Setting the `raise_error` keyword argument to `false` will skip the execution of the block but will not raise an error.  (The default value for the keyword is `true`.)
 
 ### Complex version constraints
 
