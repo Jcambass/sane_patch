@@ -42,3 +42,15 @@ RSpec::Matchers.define :engage_guard do
 
   supports_block_expectations
 end
+
+RSpec::Matchers.define :engage_guard_no_raise do
+  match do |actual|
+    yielded = false
+    expect {
+      actual.call(Proc.new { yielded = true })
+     }.to_not raise_error
+    expect(yielded).to be_falsey
+  end
+
+  supports_block_expectations
+end

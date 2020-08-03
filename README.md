@@ -66,6 +66,8 @@ SanePatch::Errors::IncompatibleVersion:
   Make sure that the patch at initializers/greeter_patch.rb:8 is still needed and working.
 ```
 
+Setting the `raise_error` keyword argument to `false` will skip the execution of the block but will not raise an error.  (The default value for the keyword is `true`.)
+
 ### Complex version constraints
 
 SanePatch supports all [version constraints](http://docs.seattlerb.org/rubygems/Gem/Requirement.html) you know and love from RubyGems.
@@ -121,6 +123,14 @@ SanePatch::Errors::IncompatibleVersion:
   The `silence` method should output an empty string rather than nil.
   This is a known issue and will be fixed in the next release.
   See: https://github.com/Jcambass/greeter/issues/45
+```
+
+### Logging support
+
+The `logger` keyword argument can be used to supply a logger instance.  SanePatch will pass the exception message to that object's `#warn` method when the version constraint is not satisfied:
+
+```ruby
+SanePatch.patch('greeter', '1.1.0', logger: Logger.new(STDOUT)) { # your patch }
 ```
 
 ## Contributing
