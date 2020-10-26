@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/Jcambass/sane_patch/master/assets/logo.png" width="100" height="100">
 
-# SanePatch [![Gem Version](https://badge.fury.io/rb/sane_patch.svg)](https://badge.fury.io/rb/sane_patch) [![Build Status](https://travis-ci.com/Jcambass/sane_patch.svg?branch=master)](https://travis-ci.com/Jcambass/sane_patch)
+# SanePatch [![Gem Version](https://badge.fury.io/rb/sane_patch.svg)](https://badge.fury.io/rb/sane_patch) ![Gem Downloads](https://img.shields.io/gem/dt/sane_patch) [![Build Status](https://travis-ci.com/Jcambass/sane_patch.svg?branch=master)](https://travis-ci.com/Jcambass/sane_patch) 
 
 SanePatch is a simple and non intrusive helper that aims to make monkey patching a little bit safer.
 
