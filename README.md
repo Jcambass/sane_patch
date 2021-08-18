@@ -11,9 +11,8 @@ It achieves this by only applying your patches to a specific version of a gem an
 As with many things in life there is no pure good or bad. Monkey patching can be dangerous in certain situations and should be avoided sometimes but there are reasons to use it.
 
 Good reasons to monkey patch a gem could be:
-- Fixing a small bug in a broken gem until a new version of it is released.
+- Fixing a bug in a broken gem until a new version of it is released.
 - Performance optimizing a specific method of a gem that is used in a hot code path.
-- Probably many more...
 
 ## Installation
 
