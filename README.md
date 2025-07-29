@@ -6,6 +6,10 @@ SanePatch is a simple and non intrusive helper that aims to make monkey patching
 
 It achieves this by only applying your patches to a specific version of a gem and raising a exception if the gem version changed. This means that you will always double check that your patches still work after upgrading gems. No surprises anymore!
 
+## The Repository seems stale. Is this still supported?
+
+Yes! But I view this project as complete. We do have development only dependencies on `bundler`, `rake` and `rspec` but no runtime dependencies. Therefore you will not see regular dependency updates in this repository. Still, if there are any changes you'd like to see, feel free to open a Pull Request!
+
 ## But wait.. Isn't monkey patching bad?
 
 As with many things in life there is no pure good or bad. Monkey patching can be dangerous in certain situations and should be avoided sometimes but there are reasons to use it.
